@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 06 fév. 2018 à 15:44
+-- Généré le :  ven. 09 fév. 2018 à 18:09
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -30,12 +30,12 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `album`;
 CREATE TABLE IF NOT EXISTS `album` (
-  `album_id` char(50) NOT NULL,
-  `name` char(80) DEFAULT NULL,
+  `album_id` varchar(50) NOT NULL,
+  `name` varchar(80) DEFAULT NULL,
   `titlenumber` int(11) DEFAULT NULL,
   `disponibility` tinyint(1) DEFAULT NULL,
   `releasedate` date DEFAULT NULL,
-  `artist_id` char(50) NOT NULL,
+  `artist_id` varchar(50) NOT NULL,
   `label_nom` char(50) DEFAULT NULL,
   PRIMARY KEY (`album_id`),
   KEY `FK_album_artist_id` (`artist_id`)
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `album` (
 
 DROP TABLE IF EXISTS `artist`;
 CREATE TABLE IF NOT EXISTS `artist` (
-  `artist_id` char(50) NOT NULL,
+  `artist_id` varchar(50) NOT NULL,
   `type` char(20) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `nickname` varchar(50) DEFAULT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `artist` (
 
 DROP TABLE IF EXISTS `correspond`;
 CREATE TABLE IF NOT EXISTS `correspond` (
-  `artist_id` char(50) NOT NULL,
+  `artist_id` varchar(50) NOT NULL,
   `type_name` varchar(50) NOT NULL,
   PRIMARY KEY (`artist_id`,`type_name`),
   KEY `FK_correspond_type_name` (`type_name`)
@@ -78,16 +78,16 @@ CREATE TABLE IF NOT EXISTS `correspond` (
 
 DROP TABLE IF EXISTS `music`;
 CREATE TABLE IF NOT EXISTS `music` (
-  `music_id` char(50) NOT NULL,
+  `music_id` varchar(50) NOT NULL,
   `lyrics` tinyint(1) DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
-  `title` char(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
   `playcompteur` int(11) DEFAULT NULL,
-  `name` char(80) DEFAULT NULL,
+  `name` varchar(80) DEFAULT NULL,
   `played` tinyint(1) DEFAULT NULL,
-  `artist_id` char(50) NOT NULL,
-  `album_id` char(50) NOT NULL,
-  `fichier` longblob,
+  `artist_id` varchar(50) NOT NULL,
+  `album_id` varchar(50) NOT NULL,
+  `fichier` text,
   PRIMARY KEY (`music_id`),
   KEY `FK_music_artist_id` (`artist_id`),
   KEY `FK_music_album_id` (`album_id`)
@@ -101,10 +101,10 @@ CREATE TABLE IF NOT EXISTS `music` (
 
 DROP TABLE IF EXISTS `playlist`;
 CREATE TABLE IF NOT EXISTS `playlist` (
-  `playlist_id` char(50) NOT NULL,
-  `name` char(50) DEFAULT NULL,
+  `playlist_id` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `creationdate` date DEFAULT NULL,
-  `pseudo` char(9) DEFAULT NULL,
+  `pseudo` varchar(20) DEFAULT NULL,
   `titlenumber` int(11) DEFAULT NULL,
   PRIMARY KEY (`playlist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -129,12 +129,12 @@ CREATE TABLE IF NOT EXISTS `type` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` char(9) NOT NULL,
-  `userdetails_id` char(9) NOT NULL,
-  `pseudo` char(20) DEFAULT NULL,
-  `passwd` char(20) DEFAULT NULL,
-  `playlist_id` char(50) NOT NULL,
-  `premium_id` char(50) DEFAULT NULL,
+  `user_id` varchar(9) NOT NULL,
+  `userdetails_id` varchar(9) NOT NULL,
+  `pseudo` varchar(20) DEFAULT NULL,
+  `passwd` varchar(20) DEFAULT NULL,
+  `playlist_id` varchar(50) NOT NULL,
+  `premium_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   KEY `FK_user_premium_id` (`premium_id`),
   KEY `FK_user_details_id` (`userdetails_id`),
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 DROP TABLE IF EXISTS `userdetails`;
 CREATE TABLE IF NOT EXISTS `userdetails` (
-  `userdetails_id` char(9) NOT NULL,
+  `userdetails_id` varchar(9) NOT NULL,
   `creationdate` date DEFAULT NULL,
   `favorites` char(50) DEFAULT NULL,
   `rank` char(50) DEFAULT NULL,
@@ -167,10 +167,10 @@ CREATE TABLE IF NOT EXISTS `userdetails` (
 
 DROP TABLE IF EXISTS `userpremium`;
 CREATE TABLE IF NOT EXISTS `userpremium` (
-  `userpremium_id` char(50) NOT NULL,
+  `userpremium_id` varchar(50) NOT NULL,
   `premium` tinyint(1) DEFAULT NULL,
   `duration` float DEFAULT NULL,
-  `pseudo` char(9) DEFAULT NULL,
+  `pseudo` varchar(9) DEFAULT NULL,
   PRIMARY KEY (`userpremium_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
