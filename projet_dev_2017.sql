@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `album` (
   `disponibility` tinyint(1) DEFAULT NULL,
   `releasedate` date DEFAULT NULL,
   `artist_id` varchar(50) NOT NULL,
-  `label_nom` char(50) DEFAULT NULL,
+  `label_name` char(50) DEFAULT NULL,
   PRIMARY KEY (`album_id`),
   KEY `FK_album_artist_id` (`artist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
