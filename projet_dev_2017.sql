@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `album` (
   `label_name` char(50) DEFAULT NULL,
   PRIMARY KEY (`album_id`),
   KEY `FK_album_artist_id` (`artist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `name` varchar(50) DEFAULT NULL,
   `nickname` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `correspond` (
   `type_name` varchar(50) NOT NULL,
   PRIMARY KEY (`artist_id`,`type_name`),
   KEY `FK_correspond_type_name` (`type_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `music` (
   PRIMARY KEY (`music_id`),
   KEY `FK_music_artist_id` (`artist_id`),
   KEY `FK_music_album_id` (`album_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `playlist` (
   `pseudo` varchar(20) DEFAULT NULL,
   `titlenumber` int(11) DEFAULT NULL,
   PRIMARY KEY (`playlist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS `type`;
 CREATE TABLE IF NOT EXISTS `type` (
   `type_name` varchar(50) NOT NULL,
   PRIMARY KEY (`type_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `FK_user_premium_id` (`premium_id`),
   KEY `FK_user_details_id` (`userdetails_id`),
   KEY `FK_playlist_user_id` (`playlist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `userdetails` (
   `birthdate` date DEFAULT NULL,
   `name` char(25) DEFAULT NULL,
   PRIMARY KEY (`userdetails_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `userpremium` (
   `duration` float DEFAULT NULL,
   `pseudo` varchar(9) DEFAULT NULL,
   PRIMARY KEY (`userpremium_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
