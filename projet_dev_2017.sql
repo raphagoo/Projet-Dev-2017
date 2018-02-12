@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `userdetails_id` int(6) NOT NULL,
   `pseudo` varchar(20) NOT NULL,
-  `passwd` varchar(20) NOT NULL,
+  `passwd` varchar(80) NOT NULL,
   `playlist_id` varchar(50) DEFAULT NULL,
   `premium_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
