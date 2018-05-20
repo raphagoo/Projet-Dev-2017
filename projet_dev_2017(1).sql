@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 19 2018 г., 11:43
+-- Время создания: Май 20 2018 г., 16:20
 -- Версия сервера: 5.7.19
 -- Версия PHP: 7.2.2
 
@@ -36,10 +36,19 @@ CREATE TABLE IF NOT EXISTS `album` (
   `disponibility` tinyint(4) NOT NULL,
   `releaseDate` date DEFAULT NULL,
   `labelName` varchar(80) DEFAULT NULL,
+  `picturePath` varchar(200) DEFAULT NULL,
   `artiste_id` int(11) NOT NULL,
   PRIMARY KEY (`album_id`),
   KEY `FK_album_artiste_id` (`artiste_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `album`
+--
+
+INSERT INTO `album` (`album_id`, `name`, `nbTracks`, `disponibility`, `releaseDate`, `labelName`, `picturePath`, `artiste_id`) VALUES
+(1, 'ep1', NULL, 1, '2018-05-19', 'af', NULL, 2),
+(2, 'w', NULL, 1, '2018-05-07', 'Valittder', 'Assets/IMG/13450190_1213163208702593_6652050158245010946_n.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -56,7 +65,15 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `type_name` varchar(80) NOT NULL,
   PRIMARY KEY (`artiste_id`),
   KEY `FK_artist_type_name` (`type_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `artist`
+--
+
+INSERT INTO `artist` (`artiste_id`, `type`, `name`, `nickname`, `type_name`) VALUES
+(1, NULL, 'Ivan Rebroff', 'I.Rebrov', 'Classique'),
+(2, NULL, 'Eduard Khil', 'E.K', 'Classique');
 
 -- --------------------------------------------------------
 
@@ -67,28 +84,23 @@ CREATE TABLE IF NOT EXISTS `artist` (
 DROP TABLE IF EXISTS `music`;
 CREATE TABLE IF NOT EXISTS `music` (
   `music_id` int(11) NOT NULL AUTO_INCREMENT,
-  `lyrics` tinyint(4) NOT NULL,
-  `duration` int(11) NOT NULL,
+  `lyricsPath` varchar(250) DEFAULT NULL,
+  `duration` varchar(50) NOT NULL,
   `title` varchar(80) NOT NULL,
   `playedCounter` int(11) DEFAULT NULL,
   `name` varchar(80) DEFAULT NULL,
   `file` text NOT NULL,
-  PRIMARY KEY (`music_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `music_album`
---
-
-DROP TABLE IF EXISTS `music_album`;
-CREATE TABLE IF NOT EXISTS `music_album` (
-  `music_id` int(11) NOT NULL,
   `album_id` int(11) NOT NULL,
-  PRIMARY KEY (`music_id`,`album_id`),
-  KEY `FK_music_album_album_id` (`album_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`music_id`),
+  KEY `music_album0_FK` (`album_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `music`
+--
+
+INSERT INTO `music` (`music_id`, `lyricsPath`, `duration`, `title`, `playedCounter`, `name`, `file`, `album_id`) VALUES
+(1, 'Assets/Lyrics/lyrics.txt', '1 : 23', 'musiccc', NULL, 'gg', 'Assets/Music/Boris_Vian_-_La_complainte_du_progrÃ¨s_1956[www.MP3Fiber.com].mp3', 1);
 
 -- --------------------------------------------------------
 
@@ -132,6 +144,14 @@ CREATE TABLE IF NOT EXISTS `type` (
   `type_name` varchar(80) NOT NULL,
   PRIMARY KEY (`type_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `type`
+--
+
+INSERT INTO `type` (`type_name`) VALUES
+('Classique'),
+('rock');
 
 -- --------------------------------------------------------
 
@@ -216,11 +236,10 @@ ALTER TABLE `artist`
   ADD CONSTRAINT `FK_artist_type_name` FOREIGN KEY (`type_name`) REFERENCES `type` (`type_name`);
 
 --
--- Ограничения внешнего ключа таблицы `music_album`
+-- Ограничения внешнего ключа таблицы `music`
 --
-ALTER TABLE `music_album`
-  ADD CONSTRAINT `FK_music_album_album_id` FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`),
-  ADD CONSTRAINT `FK_music_album_music_id` FOREIGN KEY (`music_id`) REFERENCES `music` (`music_id`);
+ALTER TABLE `music`
+  ADD CONSTRAINT `music_album0_FK` FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`);
 
 --
 -- Ограничения внешнего ключа таблицы `music_playlist`
