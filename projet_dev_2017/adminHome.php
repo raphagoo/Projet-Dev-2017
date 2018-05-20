@@ -14,23 +14,32 @@ require ("include/connectToDB.inc.php");
         <h1>ADMINISTRATION DU SITE</h1>
         <div class="list-group">
             <h2>GESTION</h2>
-            <a href="adminArticles.php" class="list-group-item">Gestion des Artistes</a>
-            <a href="adminArtists.php" class="list-group-item">Gestion des Albums</a>
-            <a href="adminOrders.php" class="list-group-item">Gestion des Musiques</a>
-            <a href="adminUsers.php" class="list-group-item">Gestion des Utilisateurs</a>
+            <a href="adminArtists.php" class="list-group-item">Gestion des Artistes</a>
+            <a href="adminType.php" class="list-group-item">Gestion des Categories</a>
         </div>
 
         <div class="list-group">
             <h2>AJOUTS</h2>
             <a href="adminAddAdmin.php" class="list-group-item">Ajout d'administrateurs</a>
             <a href="adminAddArtist.php" class="list-group-item">Ajout d'Artistes</a>
-            <a href="adminAddArticle.php" class="list-group-item">Ajout d'Articles</a>
+            <a href="adminAddType.php" class="list-group-item">Ajout de categorie</a>
+            <a href="adminAddAlbum.php" class="list-group-item">Ajout d'Album</a>
+            <a href="adminAddMusic.php" class="list-group-item">Ajout de musique</a>
         </div>
 
         <?php
         function nbMusics(&$dbh)
         {
             $query = $dbh->prepare("SELECT COUNT(*) FROM music");
+            $query->execute();
+            $res = $query->fetchAll();
+
+            echo $res[0][0];
+        }
+
+        function nbAlbums(&$dbh)
+        {
+            $query = $dbh->prepare("SELECT COUNT(*) FROM album");
             $query->execute();
             $res = $query->fetchAll();
 
@@ -48,6 +57,7 @@ require ("include/connectToDB.inc.php");
         ?>
 
         <p><span class="label label-info">Nombre de musiques : <?php nbMusics($dbh)?></span></p>
+        <p><span class="label label-info">Nombre d'albums : <?php nbAlbums($dbh)?></span></p>
         <p><span class="label label-info">Nombre de membres : <?php nbUsers($dbh)?></span></p>
     </div>
 </body>
