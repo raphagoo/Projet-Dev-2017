@@ -16,6 +16,7 @@ require ("include/connectToDB.inc.php");
             <h2>GESTION</h2>
             <a href="adminArtists.php" class="list-group-item">Gestion des Artistes</a>
             <a href="adminType.php" class="list-group-item">Gestion des Categories</a>
+            <a href="adminMusic.php" class="list-group-item">Gestion des Musiques</a>
         </div>
 
         <div class="list-group">

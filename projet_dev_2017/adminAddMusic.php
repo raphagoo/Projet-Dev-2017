@@ -54,13 +54,13 @@ require ("include/admin_include/verifyAdminAccess.inc.php");
         <div class='form-row'>
             <div class='form-group col-md-6'>
                 <label for="musicFile">Fichier musique :</label>
-                <input  type="hidden" name="MAX_FILE_SIZE" value="20000000">
+                <input  type="hidden" name="MAX_FILE_SIZE" value="220000000">
                 <input class='form-control' id="musicFile" type="file" name="musicFile" required>
             </div>
             <div class='form-group col-md-6'>
                 <label for="lyricsFile">Fichier lyrics :</label>
-                <input  type="hidden" name="MAX_FILE_SIZE" value="10000000">
-                <input class='form-control' id="lyricsFile" type="file" name="lyricsFile" required>
+                <input  type="hidden" name="MAX_FILE_SIZE" value="20000000">
+                <input class='form-control' id="lyricsFile" type="file" name="lyricsFile">
             </div>
         </div>
 
