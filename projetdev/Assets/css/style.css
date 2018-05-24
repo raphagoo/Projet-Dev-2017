@@ -1,0 +1,106 @@
+body,html{
+    margin: 0;
+}
+
+#menu {
+    display: block;
+    background: linear-gradient(to right,#AFD7DF,#C1C7BB);
+    height: 70px;
+}
+#loupe{
+    float: left;
+    margin-left: 60%;
+    margin-top: 1%;
+}
+#inputrecherche{
+    float: left;
+    margin-left: 62%;
+    margin-top: -1.6%;
+}
+#btnco {
+    float: left;
+    border-radius: 0px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    background: #000000;
+    padding: 8px 30px 10px 30px;
+    border: solid #ffffff 3px;
+    text-decoration: none;
+    margin-left: 90%;
+    margin-top: -2.3%;
+}
+.essai{
+    color: white;
+    text-align: center;
+    width: 50%;
+    float: left;
+    height: 910px;
+    background-image: url("../IMG/Fundidoazul.JPG");
+}
+.essaitxt{
+    margin-top: 30%;
+}
+.payant {
+    color: white;
+    background-image: url("../IMG/fundido vio2.JPG");
+    text-align: center;
+    width: 50%;
+    height: 910px;
+    float: left;
+}
+.payanttxt{
+    margin-top: 30%;
+}
+hr .vr{
+    display: inline-block;
+    float: left;
+    height: 180px;
+    margin-top: 1%;
+}
+#app{
+    text-align: center;
+}
+.inscconn{
+    cursor: pointer;
+      }
+.containerr{
+    text-align: center;
+}
+#titrerecherche{
+    text-align: center;
+}
+.containeralbum{
+    height: 900px;
+    color: white;
+    background-color: black;
+}
+.containerinfoalbum{
+    float: left;
+    margin-left: 10%;
+    margin-top: 5%;
+    text-align: center;
+}
+.containermusique{
+    position: absolute;
+    margin-top: 5%;
+}
+.musique{
+    text-align: center;
+    line-height: 260%;
+    height: 50px;
+    width: 600px;
+    border: solid white 1px;
+    float: left;
+    border-radius: 5px;
+    margin-left: 35%;
+}
+.nomalbum{
+    font-size: 130%;
+}
+.nomartist{
+    font-size: 120%;
+}
+.white, .white a {
+    color: #fff;
+}
