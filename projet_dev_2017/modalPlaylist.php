@@ -21,7 +21,7 @@ require ("Include/playlistPopup.inc.php");
 
 
     <?php
-    print_r($_POST);
+
     addMusicToPlaylist($dbh);
 
     for ($i = 1; $i <= 10; $i++)
@@ -60,7 +60,7 @@ require ("Include/playlistPopup.inc.php");
             </div>
         </div>
     </div>
-
+    <script type="application/javascript" src="Assets/Scripts/playlistPopupScript.js"></script>
 </div>
 
 </body>
