@@ -18,6 +18,7 @@ require ("include/connectToDB.inc.php");
             <a href="adminType.php" class="list-group-item">Gestion des Categories</a>
             <a href="adminAlbum.php" class="list-group-item">Gestion des Albums</a>
             <a href="adminMusic.php" class="list-group-item">Gestion des Musiques</a>
+            <a href="adminUsers.php" class="list-group-item">Gestion des utilisateurs</a>
         </div>
 
         <div class="list-group">
