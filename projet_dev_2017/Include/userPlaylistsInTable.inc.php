@@ -103,7 +103,7 @@ function displayTable(&$dbh)
 
                 else {
                     //Normal <td>
-                    echo "<tr><form action='" . $_SERVER['PHP_SELF'] . "' method='post'><input type='hidden' value='" . $userPlaylists[$i]['playlist_id'] . "' name='playlist_id'><td>" . $userPlaylists[$i]['name'] . "</td><td>" . $userPlaylists[$i]['creationDate'] . "</td><td><input type='submit' name='subPlaylistMod' value='Modifier'></td><td><input type='submit' name='subDelPlaylist' value='Supprimer'></td></form></tr>";
+                    echo "<tr><form action='" . $_SERVER['PHP_SELF'] . "' method='post'><input type='hidden' value='" . $userPlaylists[$i]['playlist_id'] . "' name='playlist_id'><td><a href='userInsidePlaylist?playlist_id= " . $userPlaylists[$i]['playlist_id'] . "'>" . $userPlaylists[$i]['name'] . "</a></td><td>" . $userPlaylists[$i]['creationDate'] . "</td><td><input type='submit' name='subPlaylistMod' value='Modifier'></td><td><input type='submit' name='subDelPlaylist' value='Supprimer'></td></form></tr>";
                 }
             }
             //Creation <td>
@@ -112,7 +112,7 @@ function displayTable(&$dbh)
         else {
             for ($i = 0; $i < $nbPlaylists; $i++) {
                 //Normal <td>
-                echo "<tr><form action='" . $_SERVER['PHP_SELF'] . "' method='post'><input type='hidden' value='" . $userPlaylists[$i]['playlist_id'] . "' name='playlist_id'><td>" . $userPlaylists[$i]['name'] . "</td><td>" . $userPlaylists[$i]['creationDate'] . "</td><td><input type='submit' name='subPlaylistMod' value='Modifier'></td><td><input type='submit' name='subDelPlaylist' value='Supprimer'></td></form></tr>";
+                echo "<tr><form action='" . $_SERVER['PHP_SELF'] . "' method='post'><input type='hidden' value='" . $userPlaylists[$i]['playlist_id'] . "' name='playlist_id'><td><a href='userInsidePlaylist?playlist_id= " . $userPlaylists[$i]['playlist_id'] . "'>" . $userPlaylists[$i]['name'] . "</a></td><td>" . $userPlaylists[$i]['creationDate'] . "</td><td><input type='submit' name='subPlaylistMod' value='Modifier'></td><td><input type='submit' name='subDelPlaylist' value='Supprimer'></td></form></tr>";
             }
             //Creation <td>
             echo "<tr><form action='" . $_SERVER['PHP_SELF'] . "' method='post'><td colspan='3'><input type='text' name='playlistName' required></td><td><input type='submit' name='subCreatePlaylist' value='Ajouter'></td></form></tr>";
