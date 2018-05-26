@@ -5,6 +5,7 @@ var buttonPause = document.createElement("BUTTON");
 var buttonPrevious = document.createElement("BUTTON");
 var buttonNext = document.createElement("BUTTON");
 
+audio.setAttribute("controls", "controls");
 
 buttonPlay.innerHTML = "PLAY";
 buttonPlay.setAttribute("onclick", "f_buttonPlay();");
@@ -20,17 +21,19 @@ buttonPrevious.setAttribute("onclick", "f_buttonPrevious();");
 
 player.appendChild(audio);
 player.appendChild(buttonPrevious);
-player.appendChild(buttonPlay);
-player.appendChild(buttonPause);
+//player.appendChild(buttonPlay);
+//player.appendChild(buttonPause);
 player.appendChild(buttonNext);
 
-var allmusics = new Array("audio/Хотят ли русские войны.mp3", "audio/mark_bernes_-_ljubimij_gorod_(zvukoff.ru).mp3",
-    "audio/Ай да как на горке.mp3","audio/АнимациЯ_Родина[www.MP3Fiber.com].mp3","audio/Бухенвальдский набат.mp3");
+var allmusics = new Array();
 
 var currentSong = 0;
 
-audio.setAttribute("src", allmusics[currentSong]);
-dispSongTitle();
+function setCurrentSong() {
+    audio.setAttribute("src", allmusics[currentSong]);
+    dispSongTitle();
+    f_buttonPlay();
+}
 
 function f_buttonPlay() {
   audio.play();
@@ -43,21 +46,28 @@ function f_buttonPause() {
 function f_buttonNext() {
     if(allmusics[++currentSong]){
         audio.setAttribute("src", allmusics[currentSong]);
+        f_buttonPlay();
         dispSongTitle();
     }else{
-        --currentSong;
-        alert("Fin de la playlist");
+        // --currentSong;
+        // alert("Fin de la playlist");
+        currentSong = 0;
+        f_buttonPlay();
         dispSongTitle();
     }
 }
 
 function f_buttonPrevious() {
   if(allmusics[--currentSong]){
-      audio.setAttribute("src", allmusics[--currentSong]);
+      audio.setAttribute("src", allmusics[currentSong]);
+      f_buttonPlay();
       dispSongTitle();
   }else{
-    alert("Fin de la playlist");
+    //alert("Fin de la playlist");
     ++currentSong;
+      currentSong = 0;
+      audio.setAttribute("src", allmusics[currentSong]);
+      f_buttonPlay();
     dispSongTitle();
   }
 }
@@ -65,3 +75,23 @@ function f_buttonPrevious() {
 function dispSongTitle(){
   document.getElementById("songTitle").innerHTML = allmusics[currentSong];
 }
+
+function onclickPlayMusic(albumArray, musicIndex){
+   allmusics  = albumArray;
+   currentSong = musicIndex;
+    setCurrentSong();
+}
+
+function onclickPlayAlbum(albumArray){
+    allmusics  = albumArray;
+    currentSong = 0;
+    setCurrentSong();
+}
+
+alert(allmusics);
+
+onclickPlayAlbum(["Assets/Music/Хотят ли русские войны.mp3", "Assets/Music/mark_bernes_-_ljubimij_gorod_(zvukoff.ru).mp3",
+    "Assets/Music/Ай да как на горке.mp3","Assets/Music/АнимациЯ_Родина[www.MP3Fiber.com].mp3","Assets/Music/Бухенвальдский набат.mp3"]);
+
+//onclickPlayMusic(['afa','yuy','opoo'], 1);
+

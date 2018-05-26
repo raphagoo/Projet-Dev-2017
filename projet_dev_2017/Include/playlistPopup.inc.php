@@ -72,7 +72,7 @@ function popupListPlaylists(&$dbh)
                 </div>
                 ";
             }
-            echo '<input class="btn btn-default" id="validateAddToPlaylist" name="validateAddToPlaylist" value="Ajouter" type="submit" />';
+            echo '<input class="btn btn-secondary" id="validateAddToPlaylist" name="validateAddToPlaylist" value="Ajouter" type="submit" />';
         }
         else {
             echo "<a href='#' class='btn btn-info'>Creer une nouvelle playlist</a>";
