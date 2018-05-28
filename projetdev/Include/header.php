@@ -1,4 +1,4 @@
-<?php session_start(); require ('Include/connectToDB.inc.php')?>
+<?php error_reporting(0); session_start(); require ('Include/connectToDB.inc.php')?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="Assets/css/bootstrap.css">
     <script src="Assets/js/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
 <header>
@@ -43,10 +44,20 @@
             ?>
             <?php if(!isset($_SESSION['pseudo'])){
                 echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Inscription/Connexion</a></li>';
+                }
+                else{
+                $premium = $dbh->prepare('SELECT premium_duration FROM user WHERE pseudo = "'.$_SESSION['pseudo'].'"');
+                $premium->execute();
+                $premiumfetch = $premium->fetchAll();
+                $dateaverif = strtotime($premiumfetch[0][0]);
+                $datenow = strtotime(date('H:i:s'));
+                if($dateaverif<$datenow){
+                    $enleverpremium = $dbh->prepare('UPDATE user SET premium = 0 WHERE pseudo = "'.$_SESSION['pseudo'].'"');
+                }
             } ?>
         </ul>
         <?php include("Include/signOut.php"); ?>
-        <form action="recherche.php" method="post" class="form-inline my-2 my-lg-0" id="recherche">
+        <form action="recherche.php?search=<?php echo $_GET['recherche'] ?>" method="get" class="form-inline my-2 my-lg-0" id="recherche">
             <input class="form-control mr-sm-2" type="search" name="recherche"  aria-label="Search">
             <button type="submit" form="recherche" class="btn btn-outline-light">Recherche</button>
         </form>
