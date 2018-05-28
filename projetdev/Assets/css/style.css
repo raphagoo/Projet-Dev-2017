@@ -104,3 +104,46 @@ hr .vr{
 .white, .white a {
     color: #fff;
 }
+#containerrecherche{
+    height: 1650px;
+    background-color: black;
+    color: white;
+}
+#containerrecherche a{
+    color: white;
+    text-decoration: none;
+}
+#titrebibli, #titrenouveaute,#titrerecent, #titrecategorie{
+    text-align: center;
+}
+#titrerecent{
+    margin-top: 30%;
+}
+#titrecategorie{
+    margin-top: 27%;
+}
+.album{
+    float: left;
+    margin-left: 2%;
+    width: 17%;
+    text-align: center;
+}
+#audioPlayer{
+    position: absolute;
+    margin-top: 43%;
+
+}
+#buttonprevious{
+    margin-top: -8%;
+}
+#buttonext{
+    margin-top: -8%;
+}
+#songTitle{
+    margin-left: 25%;
+    position: absolute;
+    margin-top: 43%;
+}
+#myModal{
+    color: black;
+}
