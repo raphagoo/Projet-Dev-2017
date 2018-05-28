@@ -61,6 +61,7 @@ require ("include/connectToDB.inc.php");
         <p><span class="label label-info">Nombre de musiques : <?php nbMusics($dbh)?></span></p>
         <p><span class="label label-info">Nombre d'albums : <?php nbAlbums($dbh)?></span></p>
         <p><span class="label label-info">Nombre de membres : <?php nbUsers($dbh)?></span></p>
+        <a href="index.php"><button class="btn btn-primary">Retour à l'accueil</button></a>
     </div>
 </body>
 </html>

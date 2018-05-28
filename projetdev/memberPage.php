@@ -12,7 +12,7 @@ $requete2fetch = $requete2->fetchAll();
    Nom : <?php echo $requetefetch[0][0]; ?><br>
    Email : <?php echo $requetefetch[0][1]; ?><br>
    Date de naissance : <?php echo $requetefetch[0][2] ?><br>
-   Premium : <?php if($requete2fetch[0] == 1){
+   Premium : <?php if($requete2fetch[0][0] == 1){
        echo "Activé";
    }
    else{

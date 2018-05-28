@@ -2,8 +2,9 @@
 <div id="titrerecherche">
 <h1>Résultats de la recherche</h1>
 </div>
+<div id="containerrecherche">
 <?php
-$resultat = $dbh->prepare('SELECT a.name, a.labelName, a.picturePath, art.nickname FROM album a, artist art WHERE a.name = "'.$_POST['recherche'].'" OR art.nickname = "'.$_POST['recherche'].'"');
+$resultat = $dbh->prepare('SELECT a.name, a.labelName, a.picturePath, art.nickname, t.type_name FROM album a, artist art, type t WHERE a.name = "'.$_GET['recherche'].'" AND a.artiste_id = art.artiste_id AND t.type_name = art.type_name OR art.nickname = "'.$_GET['recherche'].'" AND a.artiste_id = art.artiste_id AND t.type_name = art.type_name OR "'.$_GET['recherche'].'" = t.type_name AND t.type_name = art.type_name AND a.artiste_id = art.artiste_id');
 $resultat->execute();
 $resultatfetch = $resultat->fetchAll();
 $compteur1 = count($resultatfetch);
@@ -18,5 +19,6 @@ for($j = 0;$j<=$compteur1-1;$j++){
     echo "$label[$j]</div></a>";
 }
 ?>
+</div>
 </body>
 </html>

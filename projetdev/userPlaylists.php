@@ -31,6 +31,7 @@
                 <br/>
                 <?php //require ("include/admin_include/adminTypeModification.inc.php"); ?>
             </div>
+            <a href="index.php"><button class="btn btn-primary">Retour à l'accueil</button></a>
         </div>
     </body>
 </html>
