@@ -1,4 +1,6 @@
-<?php require ('Include/header.php');?>
+<?php
+$name = "Bibliothèque";
+require ('Include/header.php');?>
 <div id="containerrecherche">
     <div id="titrebibli"><h1>Bibliothèque</h1></div>
     <div id="titrenouveaute"><h2>Nouveautés</h2></div>
@@ -24,6 +26,9 @@ for($j = 0;$j<=$compteur1-1;$j++){
         $ecouterecente = $dbh->prepare('SELECT recenttype FROM user WHERE pseudo = "' . $_SESSION['pseudo'] . '"');
         $ecouterecente->execute();
         $ecouterecentefetch = $ecouterecente->fetchAll();
+        if($ecouterecentefetch[0][0] == null){
+            echo "Vous n'avez pas d'écoutes récentes";
+        }
         $tableauecoute = unserialize($ecouterecentefetch[0][0]);
         for ($k = 0; $k <= count($tableauecoute) - 1; $k++) {
             $request1 = $dbh->prepare('SELECT a.name, a.labelName, a.picturePath, art.nickname FROM album a, artist art WHERE a.name = "' . $tableauecoute[$k] . '" AND a.artiste_id = art.artiste_id');
@@ -40,7 +45,7 @@ for($j = 0;$j<=$compteur1-1;$j++){
         }
     }
     else{
-        echo 'Vous devez être connecté pour accéder aux écoutes récentes';
+        echo '<div id="msgbiblio"> Vous devez être connecté pour accéder aux écoutes récentes<br><a href="connexion.php"><button class="btn btn-primary">Se connecter</button></a></div>';
     }
     ?>
     <div id="titrecategorie"><h2>Catégories</h2></div>

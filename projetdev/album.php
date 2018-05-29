@@ -1,4 +1,5 @@
-<?php require ('Include/header.php');
+<?php $name = $_GET['album'];
+require ('Include/header.php');
 require ("Include/playlistPopup.inc.php"); ?>
 <div class='containeralbum'>
 <?php
@@ -22,7 +23,7 @@ for($j = 0; $j < $compteur;$j++) {
     $file[$j] = $requestfetch[$j][5];
     //array_push($tableaufile, array("file" => $file[$j],"nom" => $nommusique[$j],"duration" => $duree[$j]));
     array_push($tableaufile, $file[$j]);
-    echo "<div class='musique'> <button type=\"button\" class=\"btn\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"setCurrentSong(" .$file[$j]. ");\">Play</button>  $nommusique[$j] - $duree[$j]     <button type=\"button\" class=\"btn  btnAddToPlaylist\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"setMusicToAddId(" .$idmusic[$j]. ");\"><span class=\"glyphicon glyphicon-plus\"></span></button></div><div class='w-100'></div>";
+    echo "<div class='musique'> $nommusique[$j] - $duree[$j]     <button type=\"button\" class=\"btn  btnAddToPlaylist\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"setMusicToAddId(" .$idmusic[$j]. ");\"><span class=\"glyphicon glyphicon-plus\"></span></button></div><div class='w-100'></div>";
 }
 echo "</div></div>"
     ?>
