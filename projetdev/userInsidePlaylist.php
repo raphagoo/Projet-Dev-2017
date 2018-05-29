@@ -1,8 +1,5 @@
-
-<?php
-$name = "Playlist";
-require ('Include/header.php'); require ("Include/userPlaylistsInTable.inc.php");?>
-<body class="containerplaylist">
+<?php $name = "Playlist"; require ('Include/header.php');require ("Include/userInsidePlaylist.inc.php");?>
+<body>
 <div class="container">
     <h1>Mes playlists</h1>
     <div id="userPlaylistsTableDiv">
@@ -10,9 +7,9 @@ require ('Include/header.php'); require ("Include/userPlaylistsInTable.inc.php")
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Créée le </th>
-                <th>Modification</th>
-                <th>Suppression</th>
+                <th>Album</th>
+                <th>Artiste</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
 
@@ -21,12 +18,12 @@ require ('Include/header.php'); require ("Include/userPlaylistsInTable.inc.php")
             </tfoot>
 
             <tbody>
-            <?php displayTable($dbh); ?>
+            <?php displayInsidePlaylist($dbh); ?>
             </tbody>
         </table>
         <br/>
     </div>
-    <a href="index.php"><button class="btn btn-primary">Retour à l'accueil</button></a>
+    <br/><a href="userPlaylists.php"><button class="btn btn-primary">Mes playlists</button></a>
 </div>
 </body>
 </html>
