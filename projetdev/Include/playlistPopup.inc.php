@@ -43,7 +43,6 @@ function addMusicToPlaylist(&$dbh)
             {
                 $sth = $dbh->prepare("INSERT INTO music_playlist (music_id, playlist_id) VALUES ($music_id, " . $playlists[$i] . ")");
                 $sth->execute();
-                print_r($sth->errorInfo());
             }
         }
     }

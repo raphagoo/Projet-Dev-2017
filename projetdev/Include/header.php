@@ -3,11 +3,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Eskeezik - Accueil</title>
+    <title>Eskeezik - <?php echo $name; ?></title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="Assets/css/style.css">
     <link rel="stylesheet" href="Assets/css/bootstrap.css">
-    <script src="Assets/js/bootstrap.js"></script>
+    <script src="Assets/Scripts/bootstrap.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="index.php"><img src="Assets/IMG/logo.png" alt="logo"></a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -30,6 +30,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="premium.php">Premium</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ml.php">Mentions légales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.php">Contact</a>
             </li>
             <?php
             if(isset($_SESSION['rank'])) {
@@ -46,13 +52,17 @@
                 echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Inscription/Connexion</a></li>';
                 }
                 else{
+                echo '<li class="nav-item">
+                <a class="nav-link" href="userPlaylists.php">Playlist</a>
+            </li>';
                 $premium = $dbh->prepare('SELECT premium_duration FROM user WHERE pseudo = "'.$_SESSION['pseudo'].'"');
                 $premium->execute();
                 $premiumfetch = $premium->fetchAll();
                 $dateaverif = strtotime($premiumfetch[0][0]);
-                $datenow = strtotime(date('H:i:s'));
+                $datenow = strtotime(date('d-m-Y H:i:s'));
                 if($dateaverif<$datenow){
                     $enleverpremium = $dbh->prepare('UPDATE user SET premium = 0 WHERE pseudo = "'.$_SESSION['pseudo'].'"');
+                    $enleverpremium->execute();
                 }
             } ?>
         </ul>
